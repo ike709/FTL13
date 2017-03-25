@@ -157,11 +157,11 @@
 	prefs.save_preferences()
 	if(prefs.toggles & SOUND_LOBBY)
 		src << "You will now hear music in the game lobby."
-		if(istype(mob, /mob/new_player))
+		if(istype(mob, /mob/dead/new_player))
 			playtitlemusic()
 	else
 		src << "You will no longer hear music in the game lobby."
-		if(istype(mob, /mob/new_player))
+		if(istype(mob, /mob/dead/new_player))
 			mob.stopLobbySound()
 	feedback_add_details("admin_verb","TLobby") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

@@ -136,7 +136,7 @@
 	var/chase_time = 100
 	var/will_burrow = TRUE
 
-/mob/living/simple_animal/hostile/asteroid/goldgrub/New()
+/mob/living/simple_animal/hostile/asteroid/goldgrub/Initialize()
 	..()
 	var/i = rand(1,3)
 	while(i)
@@ -244,7 +244,7 @@
 	var/preserved = 0
 	var/list/spawned_brood = list()
 
-/obj/item/organ/hivelord_core/New()
+/obj/item/organ/hivelord_core/Initialize()
 	..()
 	addtimer(src, "inert_check", 2400)
 
@@ -264,7 +264,7 @@
 	else
 		feedback_add_details("hivelord_core", "[type]|stabilizer")
 
-		
+
 /obj/item/organ/hivelord_core/proc/go_inert()
 	inert = TRUE
 	desc = "The remains of a hivelord that have become useless, having been left alone too long after being harvested."
@@ -354,7 +354,7 @@
 	pass_flags = PASSTABLE
 	del_on_death = 1
 
-/mob/living/simple_animal/hostile/asteroid/hivelordbrood/New()
+/mob/living/simple_animal/hostile/asteroid/hivelordbrood/Initialize()
 	..()
 	addtimer(src, "death", 100)
 
@@ -372,7 +372,7 @@
 		reagents.reaction(get_turf(src))
 	..()
 
-/mob/living/simple_animal/hostile/asteroid/hivelordbrood/blood/New()
+/mob/living/simple_animal/hostile/asteroid/hivelordbrood/blood/Initialize()
 	create_reagents(30)
 	..()
 
@@ -507,7 +507,7 @@
 	var/latched = 0
 	anchored = 1
 
-/obj/effect/goliath_tentacle/New()
+/obj/effect/goliath_tentacle/Initialize()
 	var/turftype = get_turf(src)
 	if(istype(turftype, /turf/closed/mineral))
 		var/turf/closed/mineral/M = turftype
@@ -516,7 +516,7 @@
 
 /obj/effect/goliath_tentacle/original
 
-/obj/effect/goliath_tentacle/original/New()
+/obj/effect/goliath_tentacle/original/Initialize()
 	for(var/obj/effect/goliath_tentacle/original/O in loc)//No more GG NO RE from 2+ goliaths simultaneously tentacling you
 		if(O != src)
 			qdel(src)
@@ -837,7 +837,7 @@
 		healing properties will soon become inert if not used quickly."
 	icon_state = "legion_soul"
 
-/obj/item/organ/hivelord_core/legion/New()
+/obj/item/organ/hivelord_core/legion/Initialize()
 	..()
 	update_icon()
 
@@ -909,7 +909,7 @@
 	wanted_objects = list(/obj/effect/decal/cleanable/xenoblood/xgibs, /obj/effect/decal/cleanable/blood/gibs/)
 	var/obj/item/udder/gutlunch/udder = null
 
-/mob/living/simple_animal/hostile/asteroid/gutlunch/New()
+/mob/living/simple_animal/hostile/asteroid/gutlunch/Initialize()
 	udder = new()
 	..()
 
@@ -943,7 +943,7 @@
 /obj/item/udder/gutlunch
 	name = "nutrient sac"
 
-/obj/item/udder/gutlunch/New()
+/obj/item/udder/gutlunch/Initialize()
 	reagents = new(50)
 	reagents.my_atom = src
 
@@ -959,7 +959,7 @@
 	name = "gubbuck"
 	gender = MALE
 
-/mob/living/simple_animal/hostile/asteroid/gutlunch/gubbuck/New()
+/mob/living/simple_animal/hostile/asteroid/gutlunch/gubbuck/Initialize()
 	..()
 	color = pick("#E39FBB", "#D97D64", "#CF8C4A")
 	resize = 0.85
@@ -1005,7 +1005,7 @@
 	del_on_death = 1
 	var/gps = null
 
-/mob/living/simple_animal/hostile/spawner/lavaland/New()
+/mob/living/simple_animal/hostile/spawner/lavaland/Initialize()
 	..()
 	gps = new /obj/item/device/gps/internal(src)
 
@@ -1021,7 +1021,7 @@
 	icon_state = "tendril"
 	anchored = TRUE
 
-/obj/effect/collapse/New()
+/obj/effect/collapse/Initialize()
 	..()
 	visible_message("<span class='boldannounce'>The tendril writhes in fury as the earth around it begins to crack and break apart! Get back!</span>")
 	visible_message("<span class='warning'>Something falls free of the tendril!</span>")

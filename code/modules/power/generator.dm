@@ -26,7 +26,8 @@
 	var/lastgenlev = -1
 	var/lastcirc = "00"
 
-/obj/machinery/power/generator/initialize()
+/obj/machinery/power/generator/Initialize(mapload)
+	..()
 	var/obj/machinery/atmospherics/components/binary/circulator/circpath = /obj/machinery/atmospherics/components/binary/circulator
 	cold_circ = locate(circpath) in get_step(src, cold_dir)
 	hot_circ = locate(circpath) in get_step(src, hot_dir)

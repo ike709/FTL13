@@ -83,7 +83,7 @@ var/datum/subsystem/ticker/ticker
 				//lobby stats for statpanels
 			totalPlayers = 0
 			totalPlayersReady = 0
-			for(var/mob/new_player/player in player_list)
+			for(var/mob/dead/new_player/player in player_list)
 				++totalPlayers
 				if(player.ready)
 					++totalPlayersReady
@@ -341,7 +341,7 @@ var/datum/subsystem/ticker/ticker
 
 
 /datum/subsystem/ticker/proc/create_characters()
-	for(var/mob/new_player/player in player_list)
+	for(var/mob/dead/new_player/player in player_list)
 		if(player.ready && player.mind)
 			joined_player_list += player.ckey
 			if(player.mind.assigned_role=="AI")
@@ -370,7 +370,7 @@ var/datum/subsystem/ticker/ticker
 				SSjob.EquipRank(player, player.mind.assigned_role, 0)
 	if(captainless)
 		for(var/mob/M in player_list)
-			if(!istype(M,/mob/new_player))
+			if(!istype(M,/mob/dead/new_player))
 				M << "Captainship not forced on anyone."
 
 /datum/subsystem/ticker/proc/declare_completion()
@@ -510,7 +510,7 @@ var/datum/subsystem/ticker/ticker
 		return
 
 	queue_delay++
-	var/mob/new_player/next_in_line = queued_players[1]
+	var/mob/dead/new_player/next_in_line = queued_players[1]
 
 	switch(queue_delay)
 		if(5) //every 5 ticks check if there is a slot available

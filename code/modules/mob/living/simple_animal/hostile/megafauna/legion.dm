@@ -29,7 +29,7 @@
 	aggro_vision_range = 18
 	idle_vision_range = 13
 
-/mob/living/simple_animal/hostile/megafauna/legion/New()
+/mob/living/simple_animal/hostile/megafauna/legion/Initialize()
 	..()
 	new/obj/item/device/gps/internal/legion(src)
 

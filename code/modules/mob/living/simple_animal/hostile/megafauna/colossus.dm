@@ -78,7 +78,7 @@
 			cardinals()
 
 
-/mob/living/simple_animal/hostile/megafauna/colossus/New()
+/mob/living/simple_animal/hostile/megafauna/colossus/Initialize()
 	..()
 	internal = new/obj/item/device/gps/internal/colossus(src)
 
@@ -96,7 +96,7 @@
 	duration = 8
 	var/target
 
-/obj/effect/overlay/temp/at_shield/New(new_loc, new_target)
+/obj/effect/overlay/temp/at_shield/Initialize(mapload, new_target)
 	..()
 	target = new_target
 	addtimer(src, "orbit", 0, FALSE, target, 0, FALSE, 0, 0, FALSE, TRUE)

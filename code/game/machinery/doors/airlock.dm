@@ -67,6 +67,9 @@ var/list/airlock_overlays = list()
 	var/image/old_weld_overlay
 	var/image/old_sparks_overlay
 
+	var/cyclelinkeddir = 0
+	var/obj/machinery/door/airlock/cyclelinkedairlock
+
 	explosion_block = 1
 
 /obj/machinery/door/airlock/New()
@@ -81,6 +84,41 @@ var/list/airlock_overlays = list()
 	if(glass)
 		airlock_material = "glass"
 	update_icon()
+
+/obj/machinery/door/airlock/Initialize()
+	..()
+	if (cyclelinkeddir)
+		cyclelinkairlock()
+	if(frequency)
+		set_frequency(frequency)
+	update_icon()
+
+/obj/machinery/door/airlock/proc/cyclelinkairlock()
+	if (cyclelinkedairlock)
+		cyclelinkedairlock.cyclelinkedairlock = null
+		cyclelinkedairlock = null
+	if (!cyclelinkeddir)
+		return
+	var/limit = world.view
+	var/turf/T = get_turf(src)
+	var/obj/machinery/door/airlock/FoundDoor
+	do
+		T = get_step(T, cyclelinkeddir)
+		FoundDoor = locate() in T
+		if (FoundDoor && FoundDoor.cyclelinkeddir != get_dir(FoundDoor, src))
+			FoundDoor = null
+		limit--
+	while(!FoundDoor && limit)
+	if (!FoundDoor)
+		return
+	FoundDoor.cyclelinkedairlock = src
+	cyclelinkedairlock = FoundDoor
+
+/obj/machinery/door/airlock/on_varedit(modified_var)
+	. = ..()
+	switch (modified_var)
+		if ("cyclelinkeddir")
+			cyclelinkairlock()
 
 /obj/machinery/door/airlock/lock()
 	bolt()

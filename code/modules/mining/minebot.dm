@@ -65,7 +65,7 @@
 	qdel(src)
 	return
 
-/mob/living/simple_animal/hostile/mining_drone/New()
+/mob/living/simple_animal/hostile/mining_drone/Initialize()
 	..()
 	SetCollectBehavior()
 

@@ -196,7 +196,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 						var/area/holo_area = get_area(src)
 						var/area/eye_area = get_area(master.eyeobj)
 
-						if(eye_area in holo_area.master.related)
+						if(eye_area in holo_area.related)
 							return 1
 
 			clear_holo(master)//If not, we want to get rid of the hologram.
@@ -267,7 +267,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 			console.link_comms_pad(src)
 			break
 
-/obj/machinery/hologram/comms_pad/initialize()
+/obj/machinery/hologram/comms_pad/Initialize()
 	..()
 	if(!console)
 		for(var/obj/machinery/computer/communications/console in range(4, src))

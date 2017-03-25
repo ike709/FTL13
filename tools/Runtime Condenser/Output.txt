@@ -71,7 +71,7 @@ The following runtime has occurred 11 time(s).
 runtime error: Cannot read null.selection_color
 proc name: SetChoices (/datum/preferences/proc/SetChoices)
   source file: preferences.dm,543
-  usr: Sweetestbro (/mob/new_player)
+  usr: Sweetestbro (/mob/dead/new_player)
   src: /datum/preferences (/datum/preferences)
 
 
@@ -223,7 +223,7 @@ proc name: get fuel (/obj/item/weapon/weldingtool/proc/get_fuel)
 ** Hard deletions **
 /obj/structure/lattice - 499 time(s).
 
-/mob/new_player - 91 time(s).
+/mob/dead/new_player - 91 time(s).
 
 /image - 87 time(s).
 

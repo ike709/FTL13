@@ -84,7 +84,7 @@
 
 			if(isobserver(C.mob))
 				msg += " - Observing"
-			else if(istype(C.mob,/mob/new_player))
+			else if(istype(C.mob,/mob/dead/new_player))
 				msg += " - Lobby"
 			else
 				msg += " - Playing"

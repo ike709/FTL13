@@ -67,7 +67,7 @@
 
 #define isobserver(A) (istype(A, /mob/dead/observer))
 
-#define isnewplayer(A) (istype(A, /mob/new_player))
+#define isnewplayer(A) (istype(A, /mob/dead/new_player))
 
 #define isovermind(A) (istype(A, /mob/camera/blob))
 
@@ -86,6 +86,9 @@
 #define ismovableatom(A) (istype(A, /atom/movable))
 
 #define isobj(A) istype(A, /obj) //override the byond proc because it returns true on children of /atom/movable that aren't objs
+
+//Turf //TODO: Port the other turf defines from /tg/ and use them
+#define isspaceturf(A) (istype(A, /turf/open/space))
 
 // ASSEMBLY HELPERS
 

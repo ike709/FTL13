@@ -18,7 +18,7 @@
 	var/on_blueprints = FALSE //Are we visible on the station blueprints at roundstart?
 	var/force_blueprints = FALSE //forces the obj to be on the blueprints, regardless of when it was created.
 
-/obj/New()
+/obj/Initialize()
 	..()
 
 	if(on_blueprints && isturf(loc))
@@ -114,6 +114,10 @@
 	return
 
 /obj/proc/update_icon()
+	return
+
+//what happens when the obj's health is below integrity_failure level.
+/obj/proc/obj_break(damage_flag)
 	return
 
 /mob/proc/unset_machine()
@@ -219,5 +223,3 @@
 
 /obj/proc/CanAStarPass()
 	. = !density
-
-

@@ -721,7 +721,10 @@
 		pixel_y = (dir & 3)? (dir ==1 ? -24 : 24) : 0
 	power_change() //Checks power and initial settings
 
-/obj/machinery/turretid/initialize() //map-placed turrets autolink turrets
+/obj/machinery/turretid/Initialize(mapload) //map-placed turrets autolink turrets
+	..()
+	if(!mapload)
+		return
 	if(control_area && istext(control_area))
 		for(var/area/A in world)
 			if(A.name == control_area)
@@ -729,11 +732,7 @@
 				break
 
 	if(!control_area)
-		var/area/CA = get_area(src)
-		if(CA.master && CA.master != CA)
-			control_area = CA.master
-		else
-			control_area = CA
+		control_area = get_area(src)
 
 	for(var/obj/machinery/porta_turret/T in get_area_all_atoms(control_area))
 		turrets |= T

@@ -9,7 +9,7 @@
 	var/obj/item/weapon/electronics/airlock/board
 	var/device_type = null
 	var/id = null
-	var/initialized = 0
+	var/initialized_button = 0
 
 	anchored = 1
 	use_power = 1
@@ -116,10 +116,10 @@
 	if(id && istype(device, /obj/item/device/assembly/control))
 		var/obj/item/device/assembly/control/A = device
 		A.id = id
-	initialized = 1
+	initialized_button = 1
 
 /obj/machinery/button/attack_hand(mob/user)
-	if(!initialized)
+	if(!initialized_button)
 		setup_device()
 	src.add_fingerprint(user)
 	if(panel_open)

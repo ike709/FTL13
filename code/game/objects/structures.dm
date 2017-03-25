@@ -6,7 +6,7 @@
 	var/climbable = FALSE
 	var/mob/structureclimber
 
-/obj/structure/New()
+/obj/structure/Initialize()
 	..()
 	if(smooth)
 		queue_smooth(src)

@@ -44,7 +44,7 @@
 	butcher_results = list(/obj/item/weapon/reagent_containers/food/snacks/meat/slab/pug = 3)
 	gold_core_spawnable = 2
 
-/mob/living/simple_animal/pet/dog/corgi/New()
+/mob/living/simple_animal/pet/dog/corgi/Initialize()
 	..()
 	regenerate_icons()
 
@@ -282,7 +282,7 @@
 	var/memory_saved = 0
 	var/saved_head //path
 
-/mob/living/simple_animal/pet/dog/corgi/Ian/New()
+/mob/living/simple_animal/pet/dog/corgi/Ian/Initialize()
 	Read_Memory()
 	if(age == 0)
 		var/mob/living/simple_animal/pet/dog/corgi/puppy/P = new /mob/living/simple_animal/pet/dog/corgi/puppy(loc)

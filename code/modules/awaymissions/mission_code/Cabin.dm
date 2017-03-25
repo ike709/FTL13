@@ -30,7 +30,7 @@
 	density = 0
 	var/active = 1
 
-/obj/structure/fireplace/initialize()
+/obj/structure/fireplace/Initialize()
 	..()
 	toggleFireplace()
 
@@ -40,7 +40,6 @@
 		toggleFireplace()
 	else
 		..()
-
 
 /obj/structure/fireplace/attackby(obj/item/W,mob/living/user,params)
 	if(!active)

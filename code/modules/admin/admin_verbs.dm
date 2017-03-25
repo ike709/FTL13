@@ -368,7 +368,7 @@ var/list/admin_verbs_hideable = list(
 		ghost.can_reenter_corpse = 1 //force re-entering even when otherwise not possible
 		ghost.reenter_corpse()
 		feedback_add_details("admin_verb","P") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	else if(istype(mob,/mob/new_player))
+	else if(istype(mob,/mob/dead/new_player))
 		src << "<font color='red'>Error: Aghost: Can't admin-ghost whilst in the lobby. Join or Observe first.</font>"
 	else
 		//ghostize
@@ -644,7 +644,6 @@ var/list/admin_verbs_hideable = list(
 		var/list/candidates
 		var/turf/open/floor/tile
 		var/j,k
-		var/mob/living/carbon/human/mob
 
 		for (var/i = 1 to amount)
 			j = 100

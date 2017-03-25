@@ -227,7 +227,7 @@
 	qdel(src)
 
 
-/mob/new_player/AIize(move = 1)
+/mob/dead/new_player/AIize(move = 1)
 	spawning = 1
 	return ..(move)
 

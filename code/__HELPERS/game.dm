@@ -13,12 +13,6 @@
 	for(A, A && !isarea(A), A=A.loc); //semicolon is for the empty statement
 	return A
 
-/proc/get_area_master(O)
-	var/area/A = get_area(O)
-	if(A && A.master)
-		A = A.master
-	return A
-
 /proc/get_area_name(N) //get area by its name
 	for(var/area/A in world)
 		if(A.name == N)
@@ -39,6 +33,25 @@
 		areas |= T.loc
 	return areas
 
+
+/proc/get_open_turf_in_dir(atom/center, dir)
+	var/turf/open/T = get_ranged_target_turf(center, dir, 1)
+	if(istype(T))
+		return T
+
+/proc/get_adjacent_open_turfs(atom/center)
+	. = list(get_open_turf_in_dir(center, NORTH),
+		get_open_turf_in_dir(center, SOUTH),
+		get_open_turf_in_dir(center, EAST),
+		get_open_turf_in_dir(center, WEST))
+	listclearnulls(.)
+
+/proc/get_adjacent_open_areas(atom/center)
+	. = list()
+	var/list/adjacent_turfs = get_adjacent_open_turfs(center)
+	for(var/I in adjacent_turfs)
+		. |= get_area(I)
+
 // Like view but bypasses luminosity check
 
 /proc/get_hear(range, atom/source)
@@ -52,13 +65,13 @@
 	return heard
 
 /proc/alone_in_area(area/the_area, mob/must_be_alone, check_type = /mob/living/carbon)
-	var/area/our_area = get_area_master(the_area)
+	var/area/our_area = get_area(the_area)
 	for(var/C in living_mob_list)
 		if(!istype(C, check_type))
 			continue
 		if(C == must_be_alone)
 			continue
-		if(our_area == get_area_master(C))
+		if(our_area == get_area(C))
 			return 0
 	return 1
 
@@ -346,7 +359,7 @@
 				continue
 			else if(human_check && !istype(M, /mob/living/carbon/human))
 				continue
-			else if(istype(M, /mob/new_player)) // exclude people in the lobby
+			else if(istype(M, /mob/dead/new_player)) // exclude people in the lobby
 				continue
 			else if(isobserver(M)) // Ghosts are fine if they were playing once (didn't start as observers)
 				var/mob/dead/observer/O = M
@@ -480,5 +493,5 @@ proc/split_block(turf/T1, turf/T2)
 				var/b_x2 = min(b_x1 + 31, x2)
 				var/b_y2 = min(b_y1 + 31, y2)
 				sub_blocks += new /datum/sub_turf_block(b_x1, b_y1, z, b_x2, b_y2, z)
-	
+
 	return sub_blocks

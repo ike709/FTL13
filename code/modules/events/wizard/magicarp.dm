@@ -38,7 +38,7 @@
 	maxHealth = 50
 	health = 50
 
-/mob/living/simple_animal/hostile/carp/ranged/New()
+/mob/living/simple_animal/hostile/carp/ranged/Initialize()
 	projectiletype = pick(typesof(initial(projectiletype)))
 	..()
 

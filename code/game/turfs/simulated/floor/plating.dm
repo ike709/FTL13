@@ -16,7 +16,7 @@
 	broken_states = list("platingdmg1", "platingdmg2", "platingdmg3")
 	burnt_states = list("panelscorched")
 
-/turf/open/floor/plating/New()
+/turf/open/floor/plating/Initialize()
 	..()
 	icon_plating = icon_state
 
@@ -153,7 +153,7 @@
 	name = "engraved floor"
 	icon_state = "cult"
 
-/turf/open/floor/engine/cult/New()
+/turf/open/floor/engine/cult/Initialize()
 	PoolOrNew(/obj/effect/overlay/temp/cult/turf/open/floor, src)
 	..()
 
@@ -169,9 +169,9 @@
 
 /turf/open/floor/engine/singularity_pull(S, current_size)
 	if(current_size >= STAGE_FIVE)
-		if(builtin_tile)
+		if(floor_tile)
 			if(prob(30))
-				builtin_tile.loc = src
+				PoolOrNew(floor_tile, src)
 				make_plating()
 		else if(prob(30))
 			ReplaceWithLattice()
@@ -204,7 +204,7 @@
 	name = "alien floor"
 	icon_state = "alienpod1"
 
-/turf/open/floor/plating/abductor/New()
+/turf/open/floor/plating/abductor/Initialize()
 	..()
 	icon_state = "alienpod[rand(1,9)]"
 

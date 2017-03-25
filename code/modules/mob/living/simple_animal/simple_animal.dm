@@ -80,7 +80,7 @@
 	var/dextrous = FALSE //If the creature has, and can use, hands
 
 
-/mob/living/simple_animal/New()
+/mob/living/simple_animal/Initialize()
 	..()
 	verbs -= /mob/verb/observe
 	if(!real_name)
@@ -630,4 +630,3 @@
 			l_hand.layer = ABOVE_HUD_LAYER
 			l_hand.screen_loc = ui_lhand
 			client.screen |= l_hand
-

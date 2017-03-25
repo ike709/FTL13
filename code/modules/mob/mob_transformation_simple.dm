@@ -4,7 +4,7 @@
 //Note that this proc does NOT do MMI related stuff!
 /mob/proc/change_mob_type(new_type = null, turf/location = null, new_name = null as text, delete_old_mob = 0 as num)
 
-	if(istype(src,/mob/new_player))
+	if(istype(src,/mob/dead/new_player))
 		usr << "<span class='danger'>cannot convert players who have not entered yet.</span>"
 		return
 
@@ -18,7 +18,7 @@
 		usr << "Invalid type path (new_type = [new_type]) in change_mob_type(). Contact a coder."
 		return
 
-	if( new_type == /mob/new_player )
+	if( new_type == /mob/dead/new_player )
 		usr << "<span class='danger'>cannot convert into a new_player mob type.</span>"
 		return
 

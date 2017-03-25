@@ -616,7 +616,7 @@
 		L.Weaken(5)
 		L.adjustBruteLoss(30)
 
-/turf/open/chasm/straight_down/New()
+/turf/open/chasm/straight_down/Initialize()
 	..()
 	drop_x = x
 	drop_y = y
@@ -814,7 +814,7 @@
 	icon_state = "floor"
 	baseturf = /turf/open/indestructible/necropolis
 
-/turf/open/indestructible/necropolis/New()
+/turf/open/indestructible/necropolis/Initialize()
 	..()
 	if(prob(12))
 		icon_state = "necropolis[rand(1,2)]"

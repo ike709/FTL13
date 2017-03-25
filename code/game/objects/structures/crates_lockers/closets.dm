@@ -30,14 +30,11 @@
 	var/cutting_sound = 'sound/items/Welder.ogg'
 	var/material_drop = /obj/item/stack/sheet/metal
 
-/obj/structure/closet/New()
+/obj/structure/closet/Initialize(mapload)
 	..()
-	update_icon()
-
-/obj/structure/closet/initialize()
-	..()
-	if(!opened)		// if closed, any item at the crate's loc is put in the contents
+	if(mapload && !opened)		// if closed, any item at the crate's loc is put in the contents
 		take_contents()
+	update_icon()
 
 /obj/structure/closet/Destroy()
 	dump_contents()

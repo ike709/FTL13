@@ -69,7 +69,7 @@
 			charge()
 
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/New()
+/mob/living/simple_animal/hostile/megafauna/bubblegum/Initialize()
 	..()
 	for(var/mob/living/simple_animal/hostile/megafauna/bubblegum/B in mob_list)
 		if(B != src)
@@ -166,4 +166,3 @@
 	desc = "Though not yet strong enough to create a true physical form, it's nonetheless determined to murder you."
 	faction = list("mining")
 	weather_immunities = list("lava","ash")
-

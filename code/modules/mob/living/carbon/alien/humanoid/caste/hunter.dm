@@ -6,7 +6,7 @@
 	icon_state = "alienh_s"
 	var/obj/screen/leap_icon = null
 
-/mob/living/carbon/alien/humanoid/hunter/New()
+/mob/living/carbon/alien/humanoid/hunter/Initialize()
 	internal_organs += new /obj/item/organ/alien/plasmavessel/small
 	..()
 
@@ -94,5 +94,3 @@
 	if(leaping)
 		return
 	..()
-
-

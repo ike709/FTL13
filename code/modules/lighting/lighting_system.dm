@@ -310,12 +310,14 @@
 		if(lighting_object)
 			lighting_object.alpha = 0
 			lighting_object = null
+		CHECK_TICK
 	else
 		if(!lighting_object)
 			lighting_object = new (src)
 		redraw_lighting(1)
 		for(var/turf/open/space/T in RANGE_TURFS(1,src))
 			T.update_starlight()
+		CHECK_TICK
 
 
 /turf/open/space/init_lighting()

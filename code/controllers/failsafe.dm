@@ -21,7 +21,7 @@ var/datum/controller/failsafe/Failsafe
 	// Track the MC iteration to make sure its still on track.
 	var/master_iteration = 0
 
-/datum/controller/failsafe/New()
+/datum/controller/failsafe/Initialize()
 	// Highlander-style: there can only be one! Kill off the old and replace it with the new.
 	if(Failsafe != src)
 		if(istype(Failsafe))

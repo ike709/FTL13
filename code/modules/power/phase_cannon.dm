@@ -123,7 +123,7 @@
 	else
 		rotate()
 
-/obj/machinery/power/shipweapon/initialize()
+/obj/machinery/power/shipweapon/Initialize()
 	..()
 	if(state == 2 && anchored)
 		connect_to_network()

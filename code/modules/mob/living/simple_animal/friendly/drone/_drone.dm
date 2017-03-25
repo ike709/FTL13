@@ -67,7 +67,7 @@
 	var/hacked = 0 //If we have laws to destroy the station
 	var/datum/personal_crafting/handcrafting
 
-/mob/living/simple_animal/drone/New()
+/mob/living/simple_animal/drone/Initialize()
 	. = ..()
 
 	access_card = new /obj/item/weapon/card/id(src)

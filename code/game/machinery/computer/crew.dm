@@ -14,7 +14,8 @@
 	monitor = crewmonitor
 	return ..()
 
-/obj/machinery/computer/crew/initialize()
+/obj/machinery/computer/crew/Initialize()
+	..()
 	crewmonitor.setupOffset()	//By now the port should be registered
 
 /obj/machinery/computer/crew/attack_ai(mob/user)

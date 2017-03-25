@@ -104,7 +104,7 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 /obj/item/device
 	icon = 'icons/obj/device.dmi'
 
-/obj/item/New()
+/obj/item/Initialize()
 	..()
 	for(var/path in actions_types)
 		new path(src)

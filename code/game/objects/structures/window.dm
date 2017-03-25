@@ -25,7 +25,7 @@
 	..()
 	user << "<span class='notice'>Alt-click to rotate it clockwise.</span>"
 
-/obj/structure/window/New(Loc,re=0)
+/obj/structure/window/Initialize(mapload,re=0)
 	..()
 	health = maxhealth
 	if(re)
@@ -523,7 +523,7 @@
 	maxhealth = 100
 	explosion_block = 2 //fancy AND hard to destroy. the most useful combination.
 
-/obj/structure/window/reinforced/clockwork/New(loc, direct)
+/obj/structure/window/reinforced/clockwork/Initialize(mapload, direct)
 	..()
 	if(!fulltile)
 		var/obj/effect/E = PoolOrNew(/obj/effect/overlay/temp/ratvar/window/single, get_turf(src))

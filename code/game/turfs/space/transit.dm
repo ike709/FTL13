@@ -72,9 +72,9 @@
 	else
 		return
 
-/turf/open/space/transit/New()
-	update_icon()
+/turf/open/space/transit/Initialize()
 	..()
+	update_icon()
 
 /turf/open/space/transit/update_icon()
 	var/p = 9

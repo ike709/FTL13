@@ -10,11 +10,11 @@
 	stat = DEAD //we start dead by default
 	see_invisible = SEE_INVISIBLE_MINIMUM
 
-/mob/living/carbon/brain/New(loc)
+/mob/living/carbon/brain/Initialize()
 	..()
 	if(isturf(loc)) //not spawned in an MMI or brain organ (most likely adminspawned)
 		var/obj/item/organ/brain/OB = new(loc) //we create a new brain organ for it.
-		src.loc = OB
+		loc = OB
 		OB.brainmob = src
 
 

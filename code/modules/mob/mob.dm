@@ -14,7 +14,7 @@
 	return ..()
 
 var/next_mob_id = 0
-/mob/New()
+/mob/Initialize()
 	tag = "mob_[next_mob_id++]"
 	mob_list += src
 	if(stat == DEAD)
@@ -467,7 +467,7 @@ var/next_mob_id = 0
 		log_game("[usr.key] AM failed due to disconnect.")
 		return
 
-	var/mob/new_player/M = new /mob/new_player()
+	var/mob/dead/new_player/M = new /mob/dead/new_player()
 	if(!client)
 		log_game("[usr.key] AM failed due to disconnect.")
 		qdel(M)
@@ -484,7 +484,7 @@ var/next_mob_id = 0
 
 	if(check_rights_for(client,R_ADMIN))
 		is_admin = 1
-	else if(stat != DEAD || istype(src, /mob/new_player))
+	else if(stat != DEAD || istype(src, /mob/dead/new_player))
 		usr << "<span class='notice'>You must be observing to use this!</span>"
 		return
 
@@ -602,7 +602,7 @@ var/next_mob_id = 0
 				else
 					tickets_unresolved++
 			stat(null,"Tickets([tickets_total]):\t[tickets_unclaimed > 0 ? "Unclaimed([tickets_unclaimed])\t" : ""][tickets_resolved > 0 ? "Resolved([tickets_resolved])\t" : ""][tickets_unresolved > 0 ? "Unresolved([tickets_unresolved])\t" : ""]")
-			
+
 		if(SSshuttle.emergency)
 			var/ETA = SSshuttle.emergency.getModeStr()
 			if(ETA)

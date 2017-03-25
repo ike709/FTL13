@@ -319,7 +319,6 @@
 		if(target.reagents.get_reagent_amount("toxin") + force < force*2)
 			target.reagents.add_reagent("toxin", force/2.5)
 
-
 /atom/proc/mech_melee_attack(obj/mecha/M)
 	return
 

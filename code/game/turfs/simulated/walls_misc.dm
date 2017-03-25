@@ -7,7 +7,7 @@
 	builtin_sheet = null
 	canSmoothWith = null
 
-/turf/closed/wall/mineral/cult/New()
+/turf/closed/wall/mineral/cult/Initialize()
 	PoolOrNew(/obj/effect/overlay/temp/cult/turf, src)
 	..()
 
@@ -49,7 +49,7 @@
 	smooth = SMOOTH_MORE
 	explosion_block = 2
 
-/turf/closed/wall/clockwork/New()
+/turf/closed/wall/clockwork/Initialize()
 	..()
 	PoolOrNew(/obj/effect/overlay/temp/ratvar/wall, src)
 	PoolOrNew(/obj/effect/overlay/temp/ratvar/beam, src)

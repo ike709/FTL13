@@ -24,7 +24,7 @@
 	icon_state = "alienq"
 
 
-/mob/living/carbon/alien/humanoid/royal/queen/New()
+/mob/living/carbon/alien/humanoid/royal/queen/Initialize()
 	//there should only be one queen
 	for(var/mob/living/carbon/alien/humanoid/royal/queen/Q in living_mob_list)
 		if(Q == src)

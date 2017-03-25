@@ -35,7 +35,7 @@
 	death_sound = 'sound/magic/demon_dies.ogg'
 	damage_coeff = list(BRUTE = 1, BURN = 0.5, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
 
-/mob/living/simple_animal/hostile/megafauna/dragon/New()
+/mob/living/simple_animal/hostile/megafauna/dragon/Initialize()
 	..()
 	internal = new/obj/item/device/gps/internal/dragon(src)
 
@@ -75,7 +75,7 @@
 	duration = 12
 	pixel_z = 500
 
-/obj/effect/overlay/temp/fireball/New(loc)
+/obj/effect/overlay/temp/fireball/Initialize(loc)
 	..()
 	animate(src, pixel_z = 0, time = 12)
 
@@ -100,7 +100,7 @@
 /obj/effect/overlay/temp/target/ex_act()
 	return
 
-/obj/effect/overlay/temp/target/New(loc)
+/obj/effect/overlay/temp/target/Initialize(loc)
 	..()
 	addtimer(src, "fall", 0)
 
@@ -235,4 +235,3 @@
 	melee_damage_lower = 30
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
 	loot = list()
-

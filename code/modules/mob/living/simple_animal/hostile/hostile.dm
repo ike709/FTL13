@@ -46,7 +46,7 @@
 	var/atom/targets_from = null //all range/attack/etc. calculations should be done from this atom, defaults to the mob itself, useful for Vehicles and such
 
 
-/mob/living/simple_animal/hostile/New()
+/mob/living/simple_animal/hostile/Initialize()
 	..()
 	if(!targets_from)
 		targets_from = src

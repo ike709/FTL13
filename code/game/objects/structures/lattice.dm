@@ -14,7 +14,7 @@
 	smooth = SMOOTH_MORE
 	//	flags = CONDUCT
 
-/obj/structure/lattice/New()
+/obj/structure/lattice/Initialize()
 	..()
 	if(!(istype(src.loc, /turf/open/space)))
 		qdel(src)
@@ -82,4 +82,3 @@
 	for(var/obj/structure/cable/C in T)
 		C.Deconstruct()
 	..()
-

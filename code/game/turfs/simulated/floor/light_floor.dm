@@ -10,12 +10,8 @@
 	var/currentcolor = 1
 
 
-/turf/open/floor/light/New()
+/turf/open/floor/light/Initialize()
 	..()
-	spawn(5) //needed because when placing a light floor tile it will take a short while before setting state
-		if(istype(builtin_tile, /obj/item/stack/tile/light))
-			var/obj/item/stack/tile/light/L = builtin_tile
-			L.state = state
 	update_icon()
 
 /turf/open/floor/light/update_icon()

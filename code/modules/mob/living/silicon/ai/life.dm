@@ -44,7 +44,7 @@
 /mob/living/silicon/ai/proc/lacks_power()
 	var/turf/T = get_turf(src)
 	var/area/A = get_area(src)
-	return !T || !A || ((!A.master.power_equip || istype(T, /turf/open/space)) && !is_type_in_list(src.loc, list(/obj/item, /obj/mecha)))
+	return !T || !A || ((!A.power_equip || istype(T, /turf/open/space)) && !is_type_in_list(src.loc, list(/obj/item, /obj/mecha)))
 
 /mob/living/silicon/ai/updatehealth()
 	if(status_flags & GODMODE)
@@ -86,7 +86,7 @@
 	sleep(50)
 	var/turf/T = get_turf(src)
 	var/area/AIarea = get_area(src)
-	if(AIarea && AIarea.master.power_equip)
+	if(AIarea && AIarea.power_equip)
 		if(!istype(T, /turf/open/space))
 			ai_restore_power()
 			return
@@ -108,7 +108,7 @@
 		T = get_turf(src)
 		AIarea = get_area(src)
 		if(AIarea)
-			for(var/area/A in AIarea.master.related)
+			for(var/area/A in AIarea.related)
 				for (var/obj/machinery/power/apc/APC in A)
 					if (!(APC.stat & BROKEN))
 						theAPC = APC
@@ -121,7 +121,7 @@
 					src << "Lost connection with the APC!"
 			aiRestorePowerRoutine = POWER_RESTORATION_SEARCH_APC
 			return
-		if(AIarea.master.power_equip)
+		if(AIarea.power_equip)
 			if (!istype(T, /turf/open/space))
 				ai_restore_power()
 				return

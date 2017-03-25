@@ -5,11 +5,11 @@ var/datum/subsystem/lighting/SSlighting
 
 /datum/subsystem/lighting
 	name = "Lighting"
-	init_order = 1
-	wait = 1
-	flags = SS_POST_FIRE_TIMING
-	priority = 40
+	wait = 2
+	init_order = -20
+	priority = 35
 	display_order = 5
+	flags = SS_TICKER
 
 	var/list/changed_lights = list()		//list of all datum/light_source that need updating
 	var/changed_lights_workload = 0			//stats on the largest number of lights (max changed_lights.len)

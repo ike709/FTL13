@@ -15,7 +15,7 @@
 	var/playstyle_string = "<span class='heavy_brass'>You are a bug, yell at whoever spawned you!</span>"
 	var/obj/item/clockwork/slab/internalslab //an internal slab for running scripture
 
-/mob/living/simple_animal/hostile/clockwork/New()
+/mob/living/simple_animal/hostile/clockwork/Initialize()
 	..()
 	internalslab = new/obj/item/clockwork/slab/internal(src)
 
@@ -50,7 +50,7 @@
 	in any way you can. You yourself are one of these servants, and will be able to utilize anything they can, assuming it doesn't require opposable thumbs.</b>"
 	var/movement_delay_time //how long the fragment is slowed after being hit
 
-/mob/living/simple_animal/hostile/clockwork/fragment/New()
+/mob/living/simple_animal/hostile/clockwork/fragment/Initialize()
 	..()
 	SetLuminosity(2,1)
 	if(prob(1))
@@ -124,7 +124,7 @@
 	Taking damage and remaining outside of your master will cause <i>fatigue</i>, which hinders your movement speed and attacks, in addition to forcing you back into your master if it grows \
 	too high. As a final note, you should probably avoid harming any fellow servants of Ratvar.</span>"
 
-/mob/living/simple_animal/hostile/clockwork/marauder/New()
+/mob/living/simple_animal/hostile/clockwork/marauder/Initialize()
 	..()
 	combattimer = 0
 	true_name = pick(possible_true_names)
@@ -487,7 +487,7 @@
 	playstyle_string = "<span class='heavy_brass'>You are a clockwork reclaimer</span><b>, a harbringer of the Justiciar's light. You can crawl through vents to move more swiftly. Your \
 	goal: purge all untruths and honor Ratvar. You may alt-click a valid target to break yourself apart and convert the target to a servant of Ratvar.</b>"
 
-/mob/living/simple_animal/hostile/clockwork/reclaimer/New()
+/mob/living/simple_animal/hostile/clockwork/reclaimer/Initialize()
 	..()
 	if(prob(1))
 		real_name = "jehovah's witness"

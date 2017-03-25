@@ -8,7 +8,7 @@
 	var/variant_amount = 4
 	var/list/type_to_edgeobj = list()
 
-/turf/open/floor/plating/asteroid/planet/New()
+/turf/open/floor/plating/asteroid/planet/Initialize()
 	..()
 	icon_state = "[environment_type]_[rand(0,variant_amount-1)]"
 	smooth_icon(src)
@@ -30,9 +30,9 @@
 			E.desc = T.desc
 			type_to_edgeobj += T.type
 			type_to_edgeobj[T.type] = E
-	
+
 	//var/list/to_remove_list = type_to_edgeobj - new_typelist
-	
+
 	for(var/to_remove in type_to_edgeobj)
 		if(new_typelist[to_remove])
 			continue
@@ -63,7 +63,7 @@
 	edge_layer = 1
 	edge_icon = 'icons/turf/floors/planet/grass_edge.dmi'
 
-/turf/open/floor/plating/asteroid/planet/grass/New()
+/turf/open/floor/plating/asteroid/planet/grass/Initialize()
 	var/datum/planet_loader/loader = SSmapping.z_level_to_planet_loader["[z]"]
 	color = loader.plant_color
 	..()

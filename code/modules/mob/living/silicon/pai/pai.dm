@@ -50,7 +50,8 @@
 	var/obj/item/radio/integrated/signal/sradio // AI's signaller
 
 
-/mob/living/silicon/pai/New(var/obj/item/device/paicard/P)
+/mob/living/silicon/pai/Initialize()
+	var/obj/item/device/paicard/P = loc
 	make_laws()
 	canmove = 0
 	if(!istype(P)) //when manually spawning a pai, we create a card to put it into.

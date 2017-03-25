@@ -25,11 +25,13 @@
 									'sound/ambience/ambigen12.ogg','sound/ambience/ambigen14.ogg')
 
 	var/current_ambience = 'sound/ambience/shipambience.ogg'
+	
+	var/list/firedoors
+	var/firedoors_last_closed_on = 0
 
-/area/New()
+/area/Initialize()
 	icon_state = ""
 	layer = AREA_LAYER
-	master = src
 	uid = ++global_uid
 	related = list(src)
 	map_name = name // Save the initial (the name set in the map) name of the area.
@@ -241,17 +243,17 @@
 
 /area/proc/powered(chan)		// return true if the area has power to given channel
 
-	if(!master.requires_power)
+	if(!requires_power)
 		return 1
-	if(master.always_unpowered)
+	if(always_unpowered)
 		return 0
 	switch(chan)
 		if(EQUIP)
-			return master.power_equip
+			return power_equip
 		if(LIGHT)
-			return master.power_light
+			return power_light
 		if(ENVIRON)
-			return master.power_environ
+			return power_environ
 
 	return 0
 
@@ -270,19 +272,19 @@
 	var/used = 0
 	switch(chan)
 		if(LIGHT)
-			used += master.used_light
+			used += used_light
 		if(EQUIP)
-			used += master.used_equip
+			used += used_equip
 		if(ENVIRON)
-			used += master.used_environ
+			used += used_environ
 		if(TOTAL)
-			used += master.used_light + master.used_equip + master.used_environ
+			used += used_light + used_equip + used_environ
 		if(STATIC_EQUIP)
-			used += master.static_equip
+			used += static_equip
 		if(STATIC_LIGHT)
-			used += master.static_light
+			used += static_light
 		if(STATIC_ENVIRON)
-			used += master.static_environ
+			used += static_environ
 	return used
 
 /area/proc/addStaticPower(value, powerchannel)
@@ -296,19 +298,19 @@
 
 /area/proc/clear_usage()
 
-	master.used_equip = 0
-	master.used_light = 0
-	master.used_environ = 0
+	used_equip = 0
+	used_light = 0
+	used_environ = 0
 
 /area/proc/use_power(amount, chan)
 
 	switch(chan)
 		if(EQUIP)
-			master.used_equip += amount / 10
+			used_equip += amount / 10
 		if(LIGHT)
-			master.used_light += amount / 10
+			used_light += amount / 10
 		if(ENVIRON)
-			master.used_environ += amount / 10
+			used_environ += amount / 10
 
 
 /area/Entered(A)

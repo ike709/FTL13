@@ -6,7 +6,7 @@
 	icon_state = "aliens_s"
 
 
-/mob/living/carbon/alien/humanoid/sentinel/New()
+/mob/living/carbon/alien/humanoid/sentinel/Initialize()
 	internal_organs += new /obj/item/organ/alien/plasmavessel
 	internal_organs += new /obj/item/organ/alien/acid
 	internal_organs += new /obj/item/organ/alien/neurotoxin

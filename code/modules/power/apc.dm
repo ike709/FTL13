@@ -120,7 +120,7 @@
 	pixel_x = (src.tdir & 3)? 0 : (src.tdir == 4 ? 24 : -24)
 	pixel_y = (src.tdir & 3)? (src.tdir ==1 ? 24 : -24) : 0
 	if (building==0)
-		init()
+		Initialize()
 	else
 		area = src.loc.loc:master
 		opened = 1
@@ -158,7 +158,10 @@
 	terminal.master = src
 	terminal.set_power_group(is_priority ? POWER_GROUP_APC_PRIORITY : POWER_GROUP_APC)
 
-/obj/machinery/power/apc/proc/init()
+/obj/machinery/power/apc/Initialize(mapload)
+	..()
+	if(!mapload)
+		return
 	has_electronics = 2 //installed and secured
 
 	var/area/A = src.loc.loc
@@ -215,11 +218,11 @@
 
 		status_overlays_lock[1] = image(icon, "apcox-0")    // 0=blue 1=red
 		status_overlays_lock[2] = image(icon, "apcox-1")
-		
+
 		status_overlays_charging[1] = image(icon, "apco3-0")
 		status_overlays_charging[2] = image(icon, "apco3-1")
 		status_overlays_charging[3] = image(icon, "apco3-2")
-		
+
 		status_overlays_equipment[1] = image(icon, "apco0-0")
 		status_overlays_equipment[2] = image(icon, "apco0-1")
 		status_overlays_equipment[3] = image(icon, "apco0-2")
@@ -308,13 +311,13 @@
 	if(update_state & UPSTATE_ALLGOOD)
 		if(locked)
 			update_overlay |= APC_UPOVERLAY_LOCKED
-		
+
 		if(!last_power_received)
 			update_overlay |= APC_UPOVERLAY_CHARGEING0
 		else
 			update_overlay |= APC_UPOVERLAY_CHARGEING2
 
-		
+
 		if (!equipment)
 			update_overlay |= APC_UPOVERLAY_EQUIPMENT0
 		else if(equipment == 1)

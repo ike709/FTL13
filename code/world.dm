@@ -1,7 +1,7 @@
 /var/round_number = 0
 
 /world
-	mob = /mob/new_player
+	mob = /mob/dead/new_player
 	turf = /turf/open/space
 	area = /area/space
 	view = "15x15"
@@ -14,6 +14,7 @@ var/global/list/map_transition_config = MAP_TRANSITION_CONFIG
 	check_for_cleanbot_bug()
 	map_ready = 1
 	space_manager.initialize()
+	world.log << "Map is ready."
 
 #if (PRELOAD_RSC == 0)
 	external_rsc_urls = file2list("config/external_rsc_urls.txt","\n")

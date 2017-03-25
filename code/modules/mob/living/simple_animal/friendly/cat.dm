@@ -30,7 +30,7 @@
 	var/mob/living/simple_animal/mouse/movement_target
 	gold_core_spawnable = 2
 
-/mob/living/simple_animal/pet/cat/New()
+/mob/living/simple_animal/pet/cat/Initialize()
 	..()
 	verbs += /mob/living/proc/lay_down
 

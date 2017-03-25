@@ -15,7 +15,7 @@
 	unique_name = 1
 
 
-/mob/living/carbon/monkey/New()
+/mob/living/carbon/monkey/Initialize()
 	verbs += /mob/living/proc/mob_sleep
 	verbs += /mob/living/proc/lay_down
 
@@ -26,17 +26,14 @@
 	//initialize limbs
 	create_bodyparts()
 
-	if(good_mutations.len) //genetic mutations have been set up.
-		initialize() //initialize monkey dna
-
 	create_internal_organs()
 
 	..()
 
-/mob/living/carbon/monkey/initialize()
+/mob/living/carbon/monkey/Initialize()
+	..()
 	create_dna(src)
 	dna.initialize_dna(random_blood_type())
-
 
 /mob/living/carbon/monkey/create_internal_organs()
 	internal_organs += new /obj/item/organ/appendix
@@ -74,13 +71,11 @@
 				stat("Absorbed DNA", mind.changeling.absorbedcount)
 	return
 
-
 /mob/living/carbon/monkey/verb/removeinternal()
 	set name = "Remove Internals"
 	set category = "IC"
 	internal = null
 	return
-
 
 /mob/living/carbon/monkey/IsAdvancedToolUser()//Unless its monkey mode monkeys cant use advanced tools
 	return 0

@@ -126,7 +126,7 @@ Class Procs:
 	var/interact_offline = 0 // Can the machine be interacted with while de-powered.
 	var/speed_process = 0 // Process as fast as possible?
 
-/obj/machinery/New()
+/obj/machinery/Initialize()
 	..()
 	machines += src
 	if(!speed_process)

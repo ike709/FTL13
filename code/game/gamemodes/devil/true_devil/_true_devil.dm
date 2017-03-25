@@ -23,7 +23,7 @@
 	var/mob/living/oldform
 	var/list/devil_overlays[DEVIL_TOTAL_LAYERS]
 
-/mob/living/carbon/true_devil/New()
+/mob/living/carbon/true_devil/Initialize()
 	internal_organs += new /obj/item/organ/brain/
 	internal_organs += new /obj/item/organ/tongue
 	for(var/X in internal_organs)
