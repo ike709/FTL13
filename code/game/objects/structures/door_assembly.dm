@@ -18,7 +18,6 @@
 
 /obj/structure/door_assembly/New()
 	update_icon()
-	..()
 
 /obj/structure/door_assembly/door_assembly_0
 	name = "airlock assembly"

@@ -308,7 +308,6 @@
 
 
 /obj/structure/piano/New()
-	..()
 	song = new("piano", src)
 
 	if(prob(50))

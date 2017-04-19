@@ -188,7 +188,7 @@
 	for(var/turf/T in turflist)
 		if(T == previousturf)
 			continue	//so we don't burn the tile we be standin on
-		if(!T.atmos_adjacent_turfs || !T.atmos_adjacent_turfs[previousturf])
+		if(!T.CanAtmosPass(previousturf))
 			break
 		ignite_turf(T)
 		sleep(1)

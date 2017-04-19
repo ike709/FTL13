@@ -18,7 +18,6 @@
 	var/oreAmount = 7
 	var/openSound = 'sound/effects/stonedoor_openclose.ogg'
 	var/closeSound = 'sound/effects/stonedoor_openclose.ogg'
-	CanAtmosPass = ATMOS_PASS_DENSITY
 
 /obj/structure/mineral_door/New(location)
 	..()
@@ -59,6 +58,9 @@
 /obj/structure/mineral_door/CanPass(atom/movable/mover, turf/target, height=0)
 	if(istype(mover, /obj/effect/beam))
 		return !opacity
+	return !density
+
+/obj/structure/mineral_door/CanAtmosPass()
 	return !density
 
 /obj/structure/mineral_door/proc/TryToSwitchState(atom/user)

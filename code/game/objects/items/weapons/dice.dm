@@ -37,7 +37,6 @@
 /obj/item/weapon/dice/New()
 	result = rand(1, sides)
 	update_icon()
-	..()
 
 /obj/item/weapon/dice/d1
 	name = "d1"

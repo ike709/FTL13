@@ -1,16 +1,8 @@
-/atom/var/CanAtmosPass = ATMOS_PASS_YES
-/atom/proc/CanAtmosPass(turf/T)
-	switch(CanAtmosPass)
-		if(ATMOS_PASS_PROC)
-			return ATMOS_PASS_YES
-		if(ATMOS_PASS_DENSITY)
-			return !density
-		else
-			return CanAtmosPass
+/turf/proc/CanAtmosPass(turf/T)
 
-/turf/closed/CanAtmosPass = ATMOS_PASS_NO
+/turf/closed/CanAtmosPass(turf/T)
+	return 0
 
-/turf/open/CanAtmosPass = ATMOS_PASS_PROC
 /turf/open/CanAtmosPass(turf/T)
 	var/R
 	if(blocks_air || T.blocks_air)
@@ -18,7 +10,7 @@
 
 	for(var/obj/O in contents+T.contents)
 		var/turf/other = (O.loc == src ? T : src)
-		if(!CANATMOSPASS(O, other))
+		if(!O.CanAtmosPass(other))
 			R = 1
 			if(O.BlockSuperconductivity()) 	//the direction and open/closed are already checked on CanAtmosPass() so there are no arguments
 				var/D = get_dir(src, T)
@@ -32,38 +24,53 @@
 
 	return !R
 
+/atom/movable/proc/CanAtmosPass()
+	return 1
+
+/atom/proc/CanPass(atom/movable/mover, turf/target, height=1.5)
+	return (!density || !height)
+
+/turf/CanPass(atom/movable/mover, turf/target, height=1.5)
+	if(!target) return 0
+
+	if(istype(mover)) // turf/Enter(...) will perform more advanced checks
+		return !density
+
+	else // Now, doing more detailed checks for air movement and air group formation
+		if(target.blocks_air||blocks_air)
+			return 0
+
+		for(var/obj/obstacle in src)
+			if(!obstacle.CanPass(mover, target, height))
+				return 0
+		for(var/obj/obstacle in target)
+			if(!obstacle.CanPass(mover, src, height))
+				return 0
+
+		return 1
+
 /atom/movable/proc/BlockSuperconductivity() // objects that block air and don't let superconductivity act. Only firelocks atm.
 	return 0
 
 /turf/proc/CalculateAdjacentTurfs()
-	var/list/atmos_adjacent_turfs = src.atmos_adjacent_turfs
 	for(var/direction in cardinal)
-		var/turf/T = get_step(src, direction)
-		if(!T)
+		var/turf/open/T = get_step(src, direction)
+		if(!istype(T))
 			continue
-		if(CANATMOSPASS(T, src))
-			atmos_adjacent_turfs[T] = TRUE
-			T.atmos_adjacent_turfs[src] = TRUE
+		if(CanAtmosPass(T))
+			atmos_adjacent_turfs |= T
+			T.atmos_adjacent_turfs |= src
 		else
-			if(atmos_adjacent_turfs)
-				atmos_adjacent_turfs -= T
-			if(T.atmos_adjacent_turfs)
-				T.atmos_adjacent_turfs -= src
-	src.atmos_adjacent_turfs = atmos_adjacent_turfs
+			atmos_adjacent_turfs -= T
+			T.atmos_adjacent_turfs -= src
 
 //returns a list of adjacent turfs that can share air with this one.
 //alldir includes adjacent diagonal tiles that can share
 //	air with both of the related adjacent cardinal tiles
 /turf/proc/GetAtmosAdjacentTurfs(alldir = 0)
-	var/adjacent_turfs
-	if(atmos_adjacent_turfs)
-		adjacent_turfs = atmos_adjacent_turfs.Copy()
-	else
-		adjacent_turfs = list()
-
+	var/adjacent_turfs = atmos_adjacent_turfs.Copy()
 	if (!alldir)
 		return adjacent_turfs
-
 	var/turf/curloc = src
 
 	for (var/direction in diagonals)
@@ -72,10 +79,10 @@
 
 		for (var/checkDirection in cardinal)
 			var/turf/checkTurf = get_step(S, checkDirection)
-			if(!S.atmos_adjacent_turfs || !S.atmos_adjacent_turfs[checkTurf])
+			if(!(checkTurf in S.atmos_adjacent_turfs))
 				continue
 
-			if (adjacent_turfs[checkTurf])
+			if (checkTurf in adjacent_turfs)
 				matchingDirections++
 
 			if (matchingDirections >= 2)

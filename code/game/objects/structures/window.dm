@@ -20,7 +20,6 @@
 	var/image/crack_overlay
 	var/list/debris = list()
 	can_be_unanchored = 1
-	CanAtmosPass = ATMOS_PASS_PROC
 
 /obj/structure/window/examine(mob/user)
 	..()

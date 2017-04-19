@@ -28,7 +28,6 @@
 
 /obj/item/pizzabox/New()
 	update_icon()
-	..()
 
 /obj/item/pizzabox/Destroy()
 	unprocess()

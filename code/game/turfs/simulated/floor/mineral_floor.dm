@@ -11,15 +11,13 @@
 /turf/open/floor/mineral
 	name = "mineral floor"
 	icon_state = ""
-	var/list/icons
+	var/list/icons = list()
 
 
 
 /turf/open/floor/mineral/New()
-	broken_states = list("[initial(icon_state)]_dam")
 	..()
-	if(!icons)
-		icons = list()
+	broken_states = list("[initial(icon_state)]_dam")
 
 /turf/open/floor/mineral/update_icon()
 	if(!..())

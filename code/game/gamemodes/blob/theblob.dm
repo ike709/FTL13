@@ -29,7 +29,6 @@
 	..(loc)
 	ConsumeTile()
 	if(atmosblock)
-		CanAtmosPass = ATMOS_PASS_NO
 		air_update_turf(1)
 	return
 
@@ -59,6 +58,9 @@
 					if(C)
 						result++
 		. -= result - 1
+
+/obj/effect/blob/CanAtmosPass(turf/T)
+	return !atmosblock
 
 /obj/effect/blob/BlockSuperconductivity()
 	return atmosblock

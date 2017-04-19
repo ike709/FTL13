@@ -59,7 +59,8 @@
 	health = 200
 	smooth = SMOOTH_TRUE
 	var/resintype = null
-	CanAtmosPass = ATMOS_PASS_DENSITY
+
+
 
 /obj/structure/alien/resin/New(location)
 	..()
@@ -70,6 +71,9 @@
 	var/turf/T = loc
 	..()
 	move_update_air(T)
+
+/obj/structure/alien/resin/CanAtmosPass()
+	return !density
 
 /obj/structure/alien/resin/wall
 	name = "resin wall"

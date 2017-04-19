@@ -1,16 +1,13 @@
 /datum/pipeline
 	var/datum/gas_mixture/air
-	var/list/datum/gas_mixture/other_airs
+	var/list/datum/gas_mixture/other_airs = list()
 
-	var/list/obj/machinery/atmospherics/pipe/members
-	var/list/obj/machinery/atmospherics/components/other_atmosmch
+	var/list/obj/machinery/atmospherics/pipe/members = list()
+	var/list/obj/machinery/atmospherics/components/other_atmosmch = list()
 
 	var/update = 1
 
 /datum/pipeline/New()
-	other_airs = list()
-	members = list()
-	other_atmosmch = list()
 	SSair.networks += src
 
 /datum/pipeline/Destroy()
@@ -236,3 +233,4 @@ var/pipenetwarnings = 10
 			var/list/G_gases = G.gases
 			for(var/id in G_gases)
 				G_gases[id][MOLES] *= G.volume/total_gas_mixture.volume
+
