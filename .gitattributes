@@ -7,6 +7,4 @@
 *.dmi merge=merge-dmi
 
 # force changelog merging to use union
-html/changelog.html merge=union
-
-
+html/changelotml merge=union
