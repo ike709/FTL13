@@ -13,6 +13,9 @@
 
 	var/disgust = 0
 
+	var/datum/happiness_event/list/events = list()
+	var/has_mood = FALSE //this is bad
+
 //inventory slots
 	var/obj/item/back = null
 	var/obj/item/clothing/mask/wear_mask = null
