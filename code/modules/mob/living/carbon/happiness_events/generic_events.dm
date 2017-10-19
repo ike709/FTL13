@@ -87,11 +87,6 @@
 	happiness = -8
 	timeout = 6000
 
-/datum/happiness_event/vend_junkfood
-	description = "<span class='green'>Always consider flavor over nutritional value when using a vending machine.</span>\n"
-	happiness = 2
-	timeout = 1800
-
 /datum/happiness_event/perform_cpr
 	description = "<span class='boldgreen'>It feels good to save a life.</span>\n"
 	happiness = 6
