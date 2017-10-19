@@ -561,6 +561,11 @@
 		use_power(5)
 		if(icon_vend) //Show the vending animation if needed
 			flick(icon_vend,src)
+		if(istype(R.product_path, /obj/item/weapon/reagent_containers/food/snacks) && iscarbon(usr))
+			var/obj/item/weapon/reagent_containers/food/snacks/S = R.product_path
+			var/mob/living/carbon/C = usr
+			if(S.junkiness)
+				C.add_event("vend_junkfood", /datum/happiness_event/vend_junkfood)
 		new R.product_path(get_turf(src))
 		SSblackbox.add_details("vending_machine_usage","[src.type]|[R.product_path]")
 		vend_ready = 1
