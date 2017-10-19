@@ -22,7 +22,7 @@
 	timeout = 3000
 
 /datum/happiness_event/book_nerd
-	description = "<span class='green'>I read a book.</span>\n"
+	description = "<span class='green'>I have recently read a book.</span>\n"
 	happiness = 3
 	timeout = 3000
 
@@ -37,7 +37,7 @@
 /datum/happiness_event/burnt_thumb
 	description = "<span class='warning'>I shouldn't play with lighters...</span>\n"
 	happiness = -1
-	timeout = 600
+	timeout = 1200
 
 /datum/happiness_event/cold
 	description = "<span class='warning'>It's way too cold in here.</span>\n"
