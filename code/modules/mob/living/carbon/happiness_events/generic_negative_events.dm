@@ -69,8 +69,7 @@
 /datum/happiness_event/brain_damage
   happiness = -3
 
-/datum/happiness_event/brain_damage/New()
-  . = ..()
+/datum/happiness_event/brain_damage/add_effects()
   var/damage_message = pick_list_replacements("brain_damage_lines.json", "brain_damage")
   description = "<span class='warning'>Hurr durr... [damage_message]</span>\n"
 
