@@ -47,6 +47,12 @@
 			return // The drink might be empty after the delay, such as by spam-feeding
 		M.visible_message("<span class='danger'>[user] feeds the contents of [src] to [M].</span>", "<span class='userdanger'>[user] feeds the contents of [src] to [M].</span>")
 		add_logs(user, M, "fed", reagentlist(src))
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		for(var/R in reagents)
+			var/datum/reagent/drink = R
+			if(C.favorite_drink == drink.id)
+				C.add_event("favorite_drink", /datum/happiness_event/favorite_drink)
 
 	var/fraction = min(gulp_size/reagents.total_volume, 1)
 	checkLiked(fraction, M)

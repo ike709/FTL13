@@ -47,6 +47,12 @@
 				add_logs(user, M, "fed", reagentlist(src))
 			else
 				to_chat(user, "<span class='notice'>You swallow a gulp of [src].</span>")
+			if(iscarbon(M))
+				var/mob/living/carbon/C = M
+				for(var/R in reagents)
+					var/datum/reagent/drink = R
+					if(C.favorite_drink == drink.id)
+						C.add_event("favorite_drink", /datum/happiness_event/favorite_drink)
 			var/fraction = min(5/reagents.total_volume, 1)
 			reagents.reaction(M, INGEST, fraction)
 			spawn(5)
