@@ -253,3 +253,10 @@
 	results = list("corazone" = 3)
 	required_reagents = list("phenol" = 2, "lithium" = 1)
 	mix_message = "A distinctly white powder floats to the top of the mixture."
+
+/datum/chemical_reaction/antidepressant
+	name = "Antidepressant"
+	id = "antidepressant"
+	results = list("antidepressant" = 5)
+	required_reagents = list("antitoxin" = 3, "stimulants" = 1, "potassium" = 1)
+	mix_message = "The mixture doesn't look very antidepressing."

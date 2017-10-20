@@ -82,6 +82,10 @@
   happiness = -3
   timeout = 3000
 
+/datum/happiness_event/depressant //ODing on antidepressant
+  description = "<span class='boldwarning'>There is such a thing as too much happiness.</span>\n"
+  happiness = -8
+
 //These are unused so far but I want to remember them to use them later
 /datum/happiness_event/cloned_corpse
 	description = "<span class='boldwarning'>I recently saw my own corpse...</span>\n"

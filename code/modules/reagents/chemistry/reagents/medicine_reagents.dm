@@ -1159,3 +1159,31 @@
 	id = "corazone"
 	description = "A medication used to treat pain, fever, and inflammation, along with heart attacks."
 	color = "#F5F5F5"
+
+/datum/reagent/medicine/antidepressant
+	name = "Antidepressant"
+	id = "antidepressant"
+	description = "Chemically-induced joy."
+	color = "#79D2A6"
+	overdose_threshold = 20
+
+/datum/reagent/medicine/antidepressant/reaction_mob(mob/living/M, method=TOUCH, reac_volume, show_message = 1)
+	if(iscarbon(M) && M.stat != DEAD)
+		var/mob/living/carbon/C = M
+		to_chat(C, "<span class='green'>You feel like you're walking on sunshine.</span>")
+		C.emote("smile")
+		C.add_event("antidepressant", /datum/happiness_event/antidepressant)
+	. = ..()
+
+/datum/reagent/medicine/antidepressant/overdose_process(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("depressant", /datum/happiness_event/depressant)
+	. = ..()
+
+/datum/reagent/medicine/antidepressant/on_mob_delete(mob/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.clear_event("antidepressant")
+		C.clear_event("depressant")
+	. = ..()

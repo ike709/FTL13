@@ -38,6 +38,10 @@
   happiness = 5
   timeout = 3000
 
+/datum/happiness_event/antidepressant
+  description = "<span class='green'>I remembered to take my Joy.</span>\n"
+  happiness = 3
+
 //Unused so far but I want to remember them to use them later
 /datum/happiness_event/clown
 	description = "<span class='green'>I recently saw a funny clown!</span>\n"
