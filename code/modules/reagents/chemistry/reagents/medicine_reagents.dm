@@ -1179,6 +1179,7 @@
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
 		C.add_event("depressant", /datum/happiness_event/depressant)
+		C.clear_event("antidepressant")
 	. = ..()
 
 /datum/reagent/medicine/antidepressant/on_mob_delete(mob/M)

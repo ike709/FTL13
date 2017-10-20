@@ -36,5 +36,5 @@
 /datum/happiness_event/drugs/withdrawal_critical
 	happiness = -15
 
-/datum/happiness_event/drugs/withdrawal_critical/New(name)
-	description = "<span class='boldwarning'>[name]! [name]! [name]!</span>\n"
+/datum/happiness_event/drugs/withdrawal_critical/add_effects(name)
+	description = "<span class='boldwarning'>I don't need it. I don't need it... I NEED IT! [name]! [name]! [name]!</span>\n"
