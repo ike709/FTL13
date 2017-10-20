@@ -49,7 +49,7 @@
 				to_chat(user, "<span class='notice'>You swallow a gulp of [src].</span>")
 			if(iscarbon(M))
 				var/mob/living/carbon/C = M
-				for(var/R in reagents)
+				for(var/R in reagents.reagent_list)
 					var/datum/reagent/drink = R
 					if(C.favorite_drink == drink.id)
 						C.add_event("favorite_drink", /datum/happiness_event/favorite_drink)
