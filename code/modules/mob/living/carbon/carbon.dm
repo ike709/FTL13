@@ -1,6 +1,5 @@
 /mob/living/carbon
 	blood_volume = BLOOD_VOLUME_NORMAL
-	var/favorite_drink
 
 /mob/living/carbon/Initialize()
 	. = ..()

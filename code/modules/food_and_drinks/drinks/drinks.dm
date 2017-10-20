@@ -24,7 +24,6 @@
 	else gulp_size = max(round(reagents.total_volume / 5), 5)
 
 /obj/item/weapon/reagent_containers/food/drinks/attack(mob/M, mob/user, def_zone)
-
 	if(!reagents || !reagents.total_volume)
 		to_chat(user, "<span class='warning'>[src] is empty!</span>")
 		return 0
@@ -47,18 +46,13 @@
 			return // The drink might be empty after the delay, such as by spam-feeding
 		M.visible_message("<span class='danger'>[user] feeds the contents of [src] to [M].</span>", "<span class='userdanger'>[user] feeds the contents of [src] to [M].</span>")
 		add_logs(user, M, "fed", reagentlist(src))
-	if(iscarbon(M))
-		var/mob/living/carbon/C = M
-		for(var/R in reagents.reagent_list)
-			var/datum/reagent/drink = R
-			if(C.favorite_drink == drink.id)
-				C.add_event("favorite_drink", /datum/happiness_event/favorite_drink)
 
 	var/fraction = min(gulp_size/reagents.total_volume, 1)
 	checkLiked(fraction, M)
 	reagents.reaction(M, INGEST, fraction)
 	reagents.trans_to(M, gulp_size)
 	playsound(M.loc,'sound/items/drink.ogg', rand(10,50), 1)
+	..()
 	return 1
 
 /obj/item/weapon/reagent_containers/food/drinks/afterattack(obj/target, mob/user , proximity)
